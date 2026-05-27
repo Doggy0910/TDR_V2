@@ -47,6 +47,8 @@ OpenRouter
 Generar una API Key.
 Obrir el fitxer:
 app.js
+
+
 Substituir:
 Bearer TU_API_KEY_AQUI
 
