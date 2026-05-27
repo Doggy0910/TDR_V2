@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>17-GPT | Master Edition</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-wrapper">
+                <div class="brand">
+                    <div class="logo-glow">
+                        <img src="../logos/cubo-blanco.png" alt="17">
+                    </div>
+                    <div class="brand-text">
+                        <span class="title">Alex-GPT</span>
+                        <span class="version">v2.5 Master</span>
+                    </div>
+                </div>
+                
+                <button class="btn-new" onclick="createNewChat()">
+                    <i data-lucide="plus-circle"></i> 
+                    <span>Nuevo Chat</span>
+                </button>
+                
+                <div class="history-label">Conversaciones</div>
+                <nav class="chat-history" id="chat-history">
+                    </nav>
+
+                <div class="sidebar-footer">
+                    <div class="user-pill" onclick="toggleSettings()">
+                        <div class="avatar">M</div>
+                        <div class="user-meta">
+                            <span class="name">Master</span>
+                            <span class="plan">Offline Engine</span>
+                        </div>
+                        <i data-lucide="settings" class="s-icon"></i>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            
+            <section id="view-home" class="view active">
+                <div class="home-hero">
+                    <div class="hero-icon">
+                        <img src="../logos/cubo-blanco.png" alt="Logo Large">
+                    </div>
+                    <h1>¿Qué creamos hoy, Master?</h1>
+                    <p class="subtitle">Asistente personal optimizado para IA Local.</p>
+                    
+                    <div class="grid-actions">
+                        <div class="action-card" onclick="quickAction('Dime 5 ideas para un proyecto de programación')">
+                            <i data-lucide="code-2"></i>
+                            <h3>Programación</h3>
+                            <p>Scripts y lógica</p>
+                        </div>
+                        <div class="action-card" onclick="quickAction('Hazme un resumen de los puntos clave de este tema')">
+                            <i data-lucide="book-open"></i>
+                            <h3>Estudio</h3>
+                            <p>Resúmenes pro</p>
+                        </div>
+                        <div class="action-card" onclick="quickAction('Escribe un correo formal para un cliente')">
+                            <i data-lucide="mail"></i>
+                            <h3>Redacción</h3>
+                            <p>Email y textos</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="view-chat" class="view">
+                <header class="chat-header-bar">
+                    <div class="chat-info">
+                        <i data-lucide="cpu" class="icon-sm"></i>
+                        <select id="model-selector" class="model-select">
+    <option value="google/gemma-4-31b-it:free">Gemma 4 31B (FREE)</option>
+    <option value="openai/gpt-oss-20b:free">GPT OSS 20B (FREE)</option>
+</select>
+                            </div>
+                    <div class="header-actions">
+                        <i data-lucide="trash-2" onclick="clearAll()" title="Limpiar todo"></i>
+                    </div>
+                </header>
+                
+                <div id="chat-window" class="chat-scroller"></div>
+            </section>
+
+            <footer class="input-area">
+                <div class="input-container-box">
+                    <div class="input-field-wrapper">
+                        <textarea id="user-input" placeholder="Pregunta lo que quieras, Master..." rows="1"></textarea>
+                        <div class="input-tools">
+                            <button id="send-btn" class="send-btn-circle">
+                                <i data-lucide="arrow-up"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <p class="input-footer-text">17-GPT Master v2.5 | Procesamiento 100% Local</p>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <div id="modal-settings" class="modal-overlay">
+        <div class="settings-card">
+            <div class="settings-header">
+                <h3>Configuración de Sistema</h3>
+                <i data-lucide="x" onclick="toggleSettings()" class="close-btn"></i>
+            </div>
+            <div class="settings-body">
+                <div class="setting-group">
+                    <h4>Memoria y Caché</h4>
+                    <div class="setting-row">
+                        <span>Borrar todos los chats guardados</span>
+                        <button class="btn-action danger" onclick="clearAll()">Purgar Todo</button>
+                    </div>
+                </div>
+                <div class="setting-group">
+                    <h4>Estado del Motor</h4>
+                    <div class="setting-row">
+                        <span>Ollama Connection</span>
+                        <span class="status-badge">Activo</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        // Inicializa los iconos al cargar la página
+        lucide.createIcons();
+    </script>
+</body>
+</html>
